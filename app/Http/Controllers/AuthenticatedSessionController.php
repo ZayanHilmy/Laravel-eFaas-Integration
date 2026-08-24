@@ -24,7 +24,7 @@ class AuthenticatedSessionController extends Controller
             /** @var EfaasUser $efaas_user */
             #dd($request);
             $user = Socialite::driver('efaas')->enablePKCE()->user();
-            #dd($user);
+            #dd($user);dd
             
             
             /*$fake_data = $this->getFakeData();
