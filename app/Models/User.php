@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Database\Factories\UserFactory;
+use Javaabu\EfaasSocialite\EfaasUser;
 use Illuminate\Database\Eloquent\Attributes\Fillable;
 use Illuminate\Database\Eloquent\Attributes\Hidden;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -45,6 +46,7 @@ class User extends Authenticatable implements PasskeyUser
         return [
             'email_verified_at' => 'datetime',
             'password' => 'hashed',
+            'efaas_data' => 'array',
         ];
     }
 
@@ -58,5 +60,21 @@ class User extends Authenticatable implements PasskeyUser
         return Str::length($initials) > 1
             ? Str::substr($initials, 0, 1).Str::substr($initials, -1)
             : $initials;
+    }
+
+    public static function findEfaasUserAndUpdate(EfaasUser $efaas_user): User
+    {
+        $user = static::where('email', $efaas_user->getEmail())->first();
+
+        if (! $user) {
+            $user = new User();
+            $user->email = $efaas_user->getEmail();
+        }
+
+        $user->name = $efaas_user->getName();
+        $user->efaas_data = $efaas_user->getRaw();
+        $user->markEmailAsVerified();
+
+        return $user;
     }
 }
