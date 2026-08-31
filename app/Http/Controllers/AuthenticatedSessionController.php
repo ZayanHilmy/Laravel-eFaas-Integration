@@ -27,20 +27,18 @@ class AuthenticatedSessionController extends Controller
        
             /** @var EfaasUser $efaas_user */
             #dd($request);
-            #if (condition) {
-                # code...
-            #}
+            
             try  {
 
                 $efaas_user = Socialite::driver('efaas')->enablePKCE()->user();
                 #dd($efaas_user);
 
                 if ($efaas_user->first_name == null) {
-                    return redirect('');
+                    return redirect('')->with('error', 'Error!, Required access not given');
                 }
 
                 if($efaas_user->verified == false){
-                    return redirect('');
+                    return redirect('')->with('error', 'profile not verifified');
                 }
 
                 $id_token = $efaas_user->id_token;
@@ -66,28 +64,29 @@ class AuthenticatedSessionController extends Controller
                 // redirect to home
                 return redirect('dashboard');
             }
+            // error handling for when access is denied
             catch(ClientException $e){
 
                 $response = $e->getResponse()->getStatusCode();
 
                if ($response === 400) {
-                   return redirect('');
+                   return redirect('')->with('error', 'Error!, Access Denied');
             }
             }
             catch(InvalidStateException $e){
                 Log::error('eFaas Login Error: '.$e->getMessage());
                 return redirect('');
             }
-            #catch (\Exception $e) {
-            #Log::error('eFaas Login Error: '.$e->getMessage());
-#
-            #return redirect()->route('login')->withErrors([
-            #    'efaas' => 'eFaas Login Failed: '.$e->getMessage(),
-            #]);
-            #}
+    //         catch (\Exception $e) {
+    //         Log::error('eFaas Login Error: '.$e->getMessage());
 
-        
+    //         return redirect()->route('login')->withErrors([
+    //             'efaas' => 'eFaas Login Failed: '.$e->getMessage(),
+    //         ]);
+    //         }
+
     }
+
     public function destroy(Request $request)
     {
         Auth::logout();

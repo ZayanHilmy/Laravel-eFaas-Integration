@@ -67,11 +67,20 @@
                     <h1 class="mb-1 font-medium">Let's get started</h1>
                     
                     3
+                    
+                    @if (session('error'))
+                        <div style="margin-bottom: 1rem; border: 1px solid #ef4444; background-color: #fef2f2; border-radius: 0.5rem; padding: 1rem; font-size: 0.875rem; font-weight: 700; color: #991b1b;">
+                            {{ session('error') }}
+                        </div>
+                    @endif
+                    
                 </div>
             </main>
         </div>
+
         @auth
-        Hello    
+        Hello
+                
         @endauth
 
         
