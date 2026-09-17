@@ -1,7 +1,9 @@
 {
   "permissions": {
     "allow": [
-      "Bash(php artisan *)"
+      "Bash(php artisan *)",
+      "Bash(php -v)",
+      "Bash(python3 -c ' *)"
     ]
   }
 }

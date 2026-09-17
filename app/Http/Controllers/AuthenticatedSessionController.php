@@ -31,7 +31,7 @@ class AuthenticatedSessionController extends Controller
             try  {
 
                 $efaas_user = Socialite::driver('efaas')->enablePKCE()->user();
-                #dd($efaas_user);
+                // dd($efaas_user);
 
                 if ($efaas_user->first_name == null) {
                     return redirect('')->with('error', 'Error!, Required access not given');
