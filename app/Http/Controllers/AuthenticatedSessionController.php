@@ -116,8 +116,7 @@ class AuthenticatedSessionController extends Controller
             // for back channel logout you must return 200 OK response
             return response()->json([
                 'success' => ! empty($sid)
-                ]);            
-    
+                ]);
 
 
 }

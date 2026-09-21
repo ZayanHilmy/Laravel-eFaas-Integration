@@ -20,7 +20,7 @@ return [
          * eFaas Redirect url
          */
         'redirect' => env('EFAAS_REDIRECT_URI'),
-
+         'api_url' => env('EFAAS_API_URL'), 
         /**
          * Development mode
          * supports "production" and "development"
