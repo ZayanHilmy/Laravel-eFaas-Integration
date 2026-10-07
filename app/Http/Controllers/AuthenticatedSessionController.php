@@ -46,7 +46,7 @@ class AuthenticatedSessionController extends Controller
                                 ."Please try again after verifying your eFaas account.")
                             ->with('error_type', 'unverified');
 }
-                }
+                
 
                 $id_token = $efaas_user->id_token;
                 $sid = $efaas_user->sid;
