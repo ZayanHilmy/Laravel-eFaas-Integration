@@ -73,7 +73,9 @@ class AuthenticatedSessionController extends Controller
                 $response = $e->getResponse()->getStatusCode();
 
                if ($response === 400) {
-                   return redirect('')->with('error', 'Error!, Access Denied');
+                   return redirect('')->with('error', "This service requires access to certain information from your eFaas account.\n"
+                                                        ."Access to one or more required items was not granted.\n"
+                                                        ."Please sign in again and provide consent for the information required by this service.");
             }
             }
             catch(InvalidStateException $e){
