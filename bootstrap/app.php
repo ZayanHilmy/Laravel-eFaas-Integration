@@ -17,6 +17,8 @@ return Application::configure(basePath: dirname(__DIR__))
             'efaas_login/callback',
             'efaas/Backchannel_logout',
         ]);
+
+        $middleware->redirectGuestsTo(fn () => route('home'));
     })
     ->withExceptions(function (Exceptions $exceptions): void {
         $exceptions->shouldRenderJsonWhen(

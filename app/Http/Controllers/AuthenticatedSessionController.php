@@ -118,8 +118,6 @@ class AuthenticatedSessionController extends Controller
                 'success' => ! empty($sid)
                 ]);
 
-        return redirect('/');
-
 
 }
                 
