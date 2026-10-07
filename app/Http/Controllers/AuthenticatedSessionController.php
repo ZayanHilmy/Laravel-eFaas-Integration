@@ -32,11 +32,15 @@ class AuthenticatedSessionController extends Controller
                 $efaas_user = Socialite::driver('efaas')->enablePKCE()->user();
 
                 if ($efaas_user->first_name == null) {
-                    return redirect('')->with('error', 'Error!, Required access not given');
+                    return redirect('')->with('error', "This service requires access to certain information from your eFaas account.\n"
+                                                        ."Access to one or more required items was not granted.\n"
+                                                        ."Please sign in again and provide consent for the information required by this service."
+                        );
                 }
 
                 if($efaas_user->verified == false){
-                    return redirect('')->with('error', 'profile not verifified');
+                    return redirect('')->with('error', "Your eFaas account is not verified. A verified eFaas account is required to access this service.\n"
+                                                        ."Please try again after verifying your eFaas account.");
                 }
 
                 $id_token = $efaas_user->id_token;

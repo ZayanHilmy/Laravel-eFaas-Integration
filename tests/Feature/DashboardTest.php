@@ -2,7 +2,7 @@
 
 use App\Models\User;
 
-test('guests are redirected to the login page', function () {
+test('guests are redirected to the welcome page', function () {
     $response = $this->get(route('dashboard'));
     $response->assertRedirect(route('home'));
 });
