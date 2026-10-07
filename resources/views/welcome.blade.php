@@ -71,6 +71,14 @@
                                 </button>
                             </form>
                         </div>
+                        @if (session('error_type') === 'unverified')
+                            <div style="margin-top: 1rem; display: flex; gap: 0.75rem; align-items: center; font-weight: 500;">
+                            <a href="https://efaas.gov.mv/Verify"
+                            style="padding: 10px 25px; border-radius: 10px; border: solid 1px #164998; display: inline-flex; align-items: center; justify-content: center; font-weight: 500; background-color: #164998;text-decoration: none;  color: #fff; font-family: 'Poppins', sans-serif;">
+                                Verify your eFaas identity
+                            </a>
+                            </div>
+                        @endif
                     @endif
                     
                 </div>

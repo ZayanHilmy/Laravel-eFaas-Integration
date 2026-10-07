@@ -30,7 +30,7 @@ class AuthenticatedSessionController extends Controller
             try  {
 
                 $efaas_user = Socialite::driver('efaas')->enablePKCE()->user();
-
+                
                 if ($efaas_user->first_name == null) {
                     session()->put('efaas_id_token', $efaas_user->id_token);
                     return redirect('')->with('error', "This service requires access to certain information from your eFaas account.\n"
@@ -41,8 +41,11 @@ class AuthenticatedSessionController extends Controller
 
                 if($efaas_user->verified == false){
                     session()->put('efaas_id_token', $efaas_user->id_token);
-                    return redirect('')->with('error', "Your eFaas account is not verified. A verified eFaas account is required to access this service.\n"
-                                                        ."Please try again after verifying your eFaas account.");
+                    return redirect('/')
+                            ->with('error', "Your eFaas account is not verified. A verified eFaas account is required to access this service.\n"
+                                ."Please try again after verifying your eFaas account.")
+                            ->with('error_type', 'unverified');
+}
                 }
 
                 $id_token = $efaas_user->id_token;
