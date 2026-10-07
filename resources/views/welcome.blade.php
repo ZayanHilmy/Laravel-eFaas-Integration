@@ -42,21 +42,7 @@
                             </svg>
                             Sign in with eFaas
                         </a>
-                        <!--<a
-                            href="{{ route('login') }}"
-                            class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] text-[#1b1b18] border border-transparent hover:border-[#19140035] dark:hover:border-[#3E3E3A] rounded-sm text-sm leading-normal"
-                        >
-                            Sign in with eFaas
-                        </a>
-                        -->
-
-                        @if (Route::has('register'))
-                            <a
-                                href="{{ route('register') }}"
-                                class="inline-block px-5 py-1.5 dark:text-[#EDEDEC] border-[#19140035] hover:border-[#1915014a] border text-[#1b1b18] dark:border-[#3E3E3A] dark:hover:border-[#62605b] rounded-sm text-sm leading-normal">
-                                Register
-                            </a>
-                        @endif
+                        
                     @endauth
                 </nav>
             @endif
@@ -66,7 +52,6 @@
                 <div class="text-[13px] leading-[20px] flex-1 p-6 pb-12 lg:p-20 bg-white dark:bg-[#161615] dark:text-[#EDEDEC] shadow-[inset_0px_0px_0px_1px_rgba(26,26,0,0.16)] dark:shadow-[inset_0px_0px_0px_1px_#fffaed2d] rounded-es-lg rounded-ee-lg lg:rounded-ss-lg lg:rounded-ee-none">
                     <h1 class="mb-1 font-medium">Let's get started</h1>
                     
-                    3
                     
                     @if (session('error'))
                         <div style="margin-bottom: 1rem; border: 1px solid #ef4444; background-color: #fef2f2; border-radius: 0.5rem; padding: 1rem; font-size: 0.875rem; font-weight: 700; color: #991b1b;">
@@ -79,7 +64,7 @@
         </div>
 
         @auth
-        Hello
+
                 
         @endauth
 
