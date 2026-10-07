@@ -57,6 +57,20 @@
                         <div style="margin-bottom: 1rem; border: 1px solid #ef4444; background-color: #fef2f2; border-radius: 0.5rem; padding: 1rem; font-size: 0.875rem; font-weight: 700; color: #991b1b;">
                             {{ session('error') }}
                         </div>
+                        <div style="margin-top: 1rem; display: flex; gap: 0.75rem; align-items: center; font-weight: 500;">
+                            <a href="{{ route('login') }}"
+                            style="padding: 10px 25px; border-radius: 10px; border: solid 1px #164998; display: inline-flex; align-items: center; justify-content: center; font-weight: 500; background-color: #164998;text-decoration: none;  color: #fff; font-family: 'Poppins', sans-serif;">
+                                Try Again
+                            </a>
+
+                            <form method="POST" action="{{ route('logout') }}" style="margin: 0;">
+                                @csrf
+                                <button type="submit"
+                                        style="padding: 8px 20px; border-radius: 10px; border: solid 1px #d0d2d3; background-color: transparent; color: #991b1b; cursor: pointer; font-family: 'Poppins', sans-serif;">
+                                    Sign Out
+                                </button>
+                            </form>
+                        </div>
                     @endif
                     
                 </div>
